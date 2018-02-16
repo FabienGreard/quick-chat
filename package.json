@@ -7,7 +7,7 @@
     "server": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "coverage": "react-scripts test --coverage --watch --env=jsdom",
+    "coverage": "react-scripts test --coverage --watchAll --env=jsdom",
     "eject": "react-scripts eject"
   },
   "jest": {
