@@ -1,5 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom'
+
+/* ACTIONS */
+import { alertActions } from '../../_actions';
+
+/* HELPERS */
+import { history } from '../../helpers';
 
 /* COMPONENTS */
 import { Home, About } from '../../components';
@@ -7,24 +15,43 @@ import { Home, About } from '../../components';
 /* CSS */
 import './App.css';
 
-const App = () => (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <Link className="link-app" to="/">Home</Link>
-        </li>
-        <li>
-          <Link className="link-app" to="/about">About</Link>
-        </li>
-      </ul>
+class App extends React.Component {
+  constructor(props){
+    super(props);
 
-      <hr />
+    //listen on url change
+    history.listen((location, action) => {
+      // clear alert on location change
+      props.dispatch(alertActions.clear());
+      console.log(location, action);
+    });
 
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-    </div>
-  </Router>
-);
+  }
 
-export { App };
+  render() {
+    const { alert } = this.props;
+    return (
+      <div>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/about' component={About}/>
+        </Switch>
+      </div>
+    );
+  }
+
+}
+
+App.propTypes = {
+  alert: PropTypes.object.isRequired,
+}
+
+function mapStateToProps(state) {
+    const { alert } = state;
+    return {
+        alert
+    };
+}
+
+const connectedApp = connect(mapStateToProps)(App);
+export { connectedApp as App };
