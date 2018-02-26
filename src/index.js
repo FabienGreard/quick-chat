@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 import { store, history } from './helpers';
 import { App } from './modules';
@@ -10,8 +10,8 @@ import { App } from './modules';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter history={history}>
+    <Router history={history}>
       <App/>
-    </BrowserRouter>
+    </Router>
   </Provider>, document.getElementById('root'));
 registerServiceWorker();

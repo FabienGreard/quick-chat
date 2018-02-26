@@ -10,7 +10,7 @@ import { alertActions } from '../../_actions';
 import { history } from '../../helpers';
 
 /* COMPONENTS */
-import { Home, About } from '../../components';
+import { Home, About, Alert } from '../../components';
 
 /* CSS */
 import './App.css';
@@ -32,6 +32,7 @@ class App extends React.Component {
     const { alert } = this.props;
     return (
       <div>
+        <Alert msg={alert}/>
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/about' component={About}/>

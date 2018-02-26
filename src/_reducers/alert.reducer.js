@@ -1,6 +1,6 @@
 import { alertConstants } from '../_constants';
 
-export const alertReducer = (state = {}, action) => {
+export const alert = (state = {}, action) => {
   switch (action.type) {
     case alertConstants.SUCCESS:
       return {
