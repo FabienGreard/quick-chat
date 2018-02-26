@@ -1,14 +1,17 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { Router } from 'react-router-dom';
 
-import { store } from '../../helpers';
+import { history, store } from '../../helpers';
 import { App } from './';
 
 it('renders App without crashing', () => {
-  shallow(
+  mount(
     <Provider store={store}>
-      <App />
+      <Router history={history}>
+        <App />
+      </Router>
     </Provider>
   );
 });

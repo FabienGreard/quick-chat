@@ -32,7 +32,7 @@ class App extends React.Component {
     const { alert } = this.props;
     return (
       <div>
-        <Alert msg={alert}/>
+        <Alert alert={alert}/>
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/about' component={About}/>
