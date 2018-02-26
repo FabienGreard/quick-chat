@@ -6,12 +6,18 @@ import { Router } from 'react-router-dom';
 import { history, store } from '../../helpers';
 import { App } from './';
 
-it('renders App without crashing', () => {
-  mount(
-    <Provider store={store}>
-      <Router history={history}>
-        <App />
-      </Router>
-    </Provider>
-  );
+describe('App', () => {
+  it('renders App without crashing', () => {
+    mount(
+      <Provider store={store}>
+        <Router history={history}>
+          <App />
+        </Router>
+      </Provider>
+    );
+  });
+  it('History change', () => {
+    history.push("/");
+    expect(history.location.pathname).toEqual('/');
+  });
 });

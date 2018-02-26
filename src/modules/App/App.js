@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
 
 /* ACTIONS */
 import { alertActions } from '../../_actions';
@@ -18,14 +18,11 @@ import './App.css';
 class App extends React.Component {
   constructor(props){
     super(props);
-
     //listen on url change
     history.listen((location, action) => {
       // clear alert on location change
       props.dispatch(alertActions.clear());
-      console.log(location, action);
     });
-
   }
 
   render() {
@@ -33,6 +30,10 @@ class App extends React.Component {
     return (
       <div>
         <Alert alert={alert}/>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/About">About</Link></li>
+        </ul>
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/about' component={About}/>
