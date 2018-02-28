@@ -39,10 +39,6 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "redux-devtools": "^3.4.1"
-=======
-    "redux-devtools": "^3.4.1",
->>>>>>> be009e703c4df8d7f4ba1c17e650cefb45f2ce73
   }
 }
